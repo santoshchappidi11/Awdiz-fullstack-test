@@ -1,6 +1,7 @@
 import bcrypt from "bcrypt";
 import UserModel from "../Models/UserModel.js";
 import jwt from "jsonwebtoken";
+import QuizModel from "../Models/QuizModel.js";
 
 export const register = async (req, res) => {
   try {
@@ -120,14 +121,16 @@ export const getCurrentUser = async (req, res) => {
 
 export const submitAnswer = async (req, res) => {
   try {
-    const { myAnswer, quizAnswer, quizQuestion } = req.body;
+    const { question, myAnswer, answer, token } = req.body;
+
+    console.log(question, myAnswer, answer);
 
     if (!myAnswer)
       return res
         .status(404)
         .json({ success: false, message: "Please submit the answer!" });
 
-    const { token } = req.body;
+    // const { token } = req.body;
 
     if (!token)
       return res
@@ -145,11 +148,17 @@ export const submitAnswer = async (req, res) => {
 
     const user = await UserModel.findById(userId);
 
+    // console.log(user);
+
     if (user) {
+      const question = await QuizModel.find();
+
+      // console.log(question);
+
       const Obj = {
-        quizQuestion,
-        quizAnswer,
+        question,
         myAnswer,
+        answer,
       };
 
       user.myAnswers.push(Obj);

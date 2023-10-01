@@ -20,19 +20,24 @@ const Home = () => {
     }
   };
 
-  const handleChangeValue = (e) => {
+  const handleClickValue = (e) => {
     setMyAnswer(e.target.value);
   };
 
-  const handleAnswerSubmit = async (e, quizAnswer, quizQuestion) => {
-    e.preventDefault();
+  // const handleChangeValue = (e) => {
+  //   setMyAnswer(e.target.value);
+  // };
 
+  const handleAnswerSubmit = async (question, myAnswer, answer) => {
     if (myAnswer) {
+      const token = JSON.parse(localStorage.getItem("Token"));
+
       try {
         const response = await api.post("/submit-answer", {
+          question,
           myAnswer,
-          quizAnswer,
-          quizQuestion,
+          answer,
+          token,
         });
 
         if (response.data.success) {
@@ -77,22 +82,62 @@ const Home = () => {
       <div id="all-questions">
         {allQuestions?.length &&
           allQuestions?.map((ques) => (
-            <>
+            <div key={ques._id}>
               <h3>{ques.question}</h3>
-              <div>
+              {/* <div>
                 <p>A) {ques.option1}</p>
                 <p>B) {ques.option2}</p>
                 <p>C) {ques.option3}</p>
                 <p>D) {ques.option4}</p>
-              </div>
+              </div> */}
+
+              {
+                <div>
+                  <input
+                    type="radio"
+                    name="answer"
+                    value={ques.option1}
+                    onClick={handleClickValue}
+                  />
+                  <label htmlFor="html">{ques.option1}</label>
+                  <br />
+                  <input
+                    type="radio"
+                    name="answer"
+                    value={ques.option2}
+                    onClick={handleClickValue}
+                  />
+                  <label htmlFor="css">{ques.option2}</label>
+                  <br />
+                  <input
+                    type="radio"
+                    name="answer"
+                    value={ques.option3}
+                    onClick={handleClickValue}
+                  />
+                  <label htmlFor="javascript">{ques.option3}</label>
+                  <br />
+                  <input
+                    type="radio"
+                    name="answer"
+                    value={ques.option4}
+                    onClick={handleClickValue}
+                  />
+                  <label htmlFor="javascript">{ques.option4}</label>
+                </div>
+              }
+              <p>{myAnswer}</p>
 
               {state?.currentUser?.role == "User" && (
-                <form>
-                  <input type="text" onChange={handleChangeValue} />
-                  <button>Sumit Answer</button>
-                </form>
+                <button
+                  onClick={() =>
+                    handleAnswerSubmit(ques.question, myAnswer, ques.answer)
+                  }
+                >
+                  Sumit Answer
+                </button>
               )}
-            </>
+            </div>
           ))}
 
         <div>
