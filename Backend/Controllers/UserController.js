@@ -121,11 +121,11 @@ export const getCurrentUser = async (req, res) => {
 
 export const submitAnswer = async (req, res) => {
   try {
-    const { question, myAnswer, answer, token } = req.body;
+    const { question, userAnswer, rightAnswer, questionId, token } = req.body;
 
-    console.log(question, myAnswer, answer);
+    // console.log(question, userAnswer, rightAnswer, questionId);
 
-    if (!myAnswer)
+    if (!userAnswer)
       return res
         .status(404)
         .json({ success: false, message: "Please submit the answer!" });
@@ -151,24 +151,69 @@ export const submitAnswer = async (req, res) => {
     // console.log(user);
 
     if (user) {
-      const question = await QuizModel.find();
+      const singleQuestion = await QuizModel.findById(questionId);
 
-      // console.log(question);
+      // console.log(singleQuestion);
 
-      const Obj = {
-        question,
-        myAnswer,
-        answer,
-      };
+      if (singleQuestion) {
+        const Obj = {
+          question,
+          userAnswer,
+          rightAnswer,
+          questionId,
+        };
 
-      user.myAnswers.push(Obj);
+        user.myAnswers.push(Obj);
 
-      await user.save();
-
-      return res
-        .status(200)
-        .json({ success: true, message: "Answer submitted!" });
+        await user.save();
+        return res
+          .status(200)
+          .json({ success: true, message: "Answer submitted!" });
+      }
+      return res.status(404).json({
+        success: true,
+        message: "Answer couldn't submit, something went wrong!",
+      });
     }
+    return res.status(404).json({ success: false, message: "No user found!" });
+  } catch (error) {
+    return res.status(500).json({ success: false, error: error.message });
+  }
+};
+
+export const getQuizResult = async (req, res) => {
+  try {
+    const { token } = req.body;
+
+    if (!token)
+      return res
+        .status(404)
+        .json({ success: false, message: "Token is required!" });
+
+    const decodedData = jwt.verify(token, process.env.JWT_SECRET);
+
+    if (!decodedData)
+      return res
+        .status(404)
+        .json({ success: false, message: "Invalid Token!" });
+
+    const userId = decodedData?.userId;
+
+    const user = await UserModel.findById(userId);
+
+    console.log(user);
+
+    if (user) {
+      if (user?.myAnswers) {
+        return res
+          .status(200)
+          .json({ success: true, userAnswers: user.myAnswers });
+      }
+      return res
+        .status(404)
+        .json({ success: true, message: "No results to show" });
+    }
+    return res.status(404).json({ success: false, message: "User not found!" });
   } catch (error) {
     return res.status(500).json({ success: false, error: error.message });
   }

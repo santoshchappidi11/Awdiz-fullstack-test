@@ -71,8 +71,12 @@ export const getAllQuestions = async (req, res) => {
       .limit(limitValue)
       .lean();
 
+    const allQuestions = await QuizModel.find({});
+
     if (questions?.length) {
-      return res.status(200).json({ success: true, questions: questions });
+      return res
+        .status(200)
+        .json({ success: true, questions: questions, allQuestions });
     }
 
     return res.status(404).json({ success: false, message: "No questions!" });

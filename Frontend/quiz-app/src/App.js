@@ -6,6 +6,7 @@ import Login from "./Components/Login/Login";
 import Home from "./Components/Home/Home";
 import AddQuestion from "./Components/Admin/AddQuestion";
 import YourQuestions from "./Components/Admin/YourQuestions";
+import QuizResult from "./Components/QuizResult/QuizResult";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/add-question" element={<AddQuestion />} />
         <Route exact path="/your-questions" element={<YourQuestions />} />
+        <Route exact path="/quiz-result" element={<QuizResult />} />
       </Routes>
     </div>
   );

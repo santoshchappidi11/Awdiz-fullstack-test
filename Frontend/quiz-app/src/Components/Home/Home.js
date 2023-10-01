@@ -1,15 +1,25 @@
 import React, { useContext, useEffect, useState } from "react";
 import api from "../../ApiConfig";
 import { AuthContexts } from "../Context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigateTo = useNavigate();
   const { state } = useContext(AuthContexts);
   const [allQuestions, setAllQuestions] = useState([]);
+  const [resultQuestions, setResultQuestions] = useState([]);
   const [myAnswer, setMyAnswer] = useState("");
   const [page, setPage] = useState(1);
 
+  console.log(resultQuestions.length, "all ques");
+  console.log(page, "page");
+
   const IncrementPageCount = () => {
-    setPage(page + 1);
+    if (page == resultQuestions?.length) {
+      setPage(1);
+    } else {
+      setPage(page + 1);
+    }
   };
 
   const DecrementPageCount = () => {
@@ -28,20 +38,28 @@ const Home = () => {
   //   setMyAnswer(e.target.value);
   // };
 
-  const handleAnswerSubmit = async (question, myAnswer, answer) => {
-    if (myAnswer) {
+  const handleAnswerSubmit = async (
+    question,
+    userAnswer,
+    rightAnswer,
+    questionId
+  ) => {
+    if (userAnswer) {
       const token = JSON.parse(localStorage.getItem("Token"));
 
       try {
         const response = await api.post("/submit-answer", {
           question,
-          myAnswer,
-          answer,
+          userAnswer,
+          rightAnswer,
+          questionId,
           token,
         });
 
         if (response.data.success) {
           alert(response.data.message);
+          setPage(page + 1);
+          setMyAnswer("");
         } else {
           alert(response.data.message);
         }
@@ -62,6 +80,7 @@ const Home = () => {
 
         if (response.data.success) {
           setAllQuestions(response.data.questions);
+          setResultQuestions(response.data.allQuestions);
         } else {
           alert(response.data.message);
         }
@@ -72,6 +91,14 @@ const Home = () => {
 
     getAllQuestions();
   }, [page]);
+
+  useEffect(() => {
+    if (resultQuestions?.length) {
+      if (page > resultQuestions?.length) {
+        navigateTo("/quiz-result");
+      }
+    }
+  }, [resultQuestions, page, navigateTo]);
 
   return (
     <div id="home-screen">
@@ -131,7 +158,12 @@ const Home = () => {
               {state?.currentUser?.role == "User" && (
                 <button
                   onClick={() =>
-                    handleAnswerSubmit(ques.question, myAnswer, ques.answer)
+                    handleAnswerSubmit(
+                      ques.question,
+                      myAnswer,
+                      ques.answer,
+                      ques._id
+                    )
                   }
                 >
                   Sumit Answer
@@ -141,8 +173,12 @@ const Home = () => {
           ))}
 
         <div>
-          <button onClick={DecrementPageCount}>Prev</button>
-          <button onClick={IncrementPageCount}>Next</button>
+          {state?.currentUser?.role == "Admin" && (
+            <>
+              <button onClick={DecrementPageCount}>Prev</button>
+              <button onClick={IncrementPageCount}>Next</button>
+            </>
+          )}
         </div>
       </div>
     </div>

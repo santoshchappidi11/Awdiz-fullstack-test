@@ -5,6 +5,7 @@ import morgan from "morgan";
 import mongoose from "mongoose";
 import {
   getCurrentUser,
+  getQuizResult,
   login,
   register,
   submitAnswer,
@@ -31,6 +32,7 @@ app.post("/add-question", addQuestion);
 app.post("/get-all-questions", getAllQuestions);
 app.post("/get-your-questions", getYourQuestions);
 app.post("/submit-answer", submitAnswer);
+app.post("/get-quiz-result", getQuizResult);
 
 mongoose
   .connect(
