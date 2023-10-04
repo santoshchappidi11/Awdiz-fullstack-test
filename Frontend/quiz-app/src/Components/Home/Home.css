@@ -1,0 +1,20 @@
+#start-quiz {
+  height: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 200px 0 0 0;
+  /* border: 1px solid black; */
+}
+
+#start-quiz > button {
+  padding: 10px 25px;
+  font-weight: 700;
+  font-size: 18px;
+  border: none;
+  background: none;
+  background-color: rgb(201, 201, 201);
+  cursor: pointer;
+  border-radius: 5px;
+}

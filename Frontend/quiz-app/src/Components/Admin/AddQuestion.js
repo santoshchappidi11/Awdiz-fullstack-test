@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import api from "../../ApiConfig/index";
 import { useNavigate } from "react-router-dom";
+import "./AddQuestion.css";
 
 const AddQuestion = () => {
   const navigateTo = useNavigate();
@@ -57,53 +58,65 @@ const AddQuestion = () => {
           <h2>Add Question</h2>
         </div>
         <form onSubmit={handleQuestionSubmit}>
-          <label>Question:</label>
-          <input
-            type="text"
-            name="question"
-            onChange={handleChangeValues}
-            value={questionData.question}
-          />
+          <div>
+            <label>Question:</label>
+            <input
+              type="text"
+              name="question"
+              onChange={handleChangeValues}
+              value={questionData.question}
+            />
+          </div>
           <br />
-          <label>Option 1:</label>
-          <input
-            type="text"
-            name="option1"
-            onChange={handleChangeValues}
-            value={questionData.option1}
-          />
+          <div>
+            <label>Option 1:</label>
+            <input
+              type="text"
+              name="option1"
+              onChange={handleChangeValues}
+              value={questionData.option1}
+            />
+          </div>
           <br />
-          <label>Option 2:</label>
-          <input
-            type="text"
-            name="option2"
-            onChange={handleChangeValues}
-            value={questionData.option2}
-          />
+          <div>
+            <label>Option 2:</label>
+            <input
+              type="text"
+              name="option2"
+              onChange={handleChangeValues}
+              value={questionData.option2}
+            />
+          </div>
           <br />
-          <label>Options 3:</label>
-          <input
-            type="text"
-            name="option3"
-            onChange={handleChangeValues}
-            value={questionData.option3}
-          />
+          <div>
+            <label>Options 3:</label>
+            <input
+              type="text"
+              name="option3"
+              onChange={handleChangeValues}
+              value={questionData.option3}
+            />
+          </div>
           <br />
-          <label>Options 4:</label>
-          <input
-            type="text"
-            name="option4"
-            onChange={handleChangeValues}
-            value={questionData.option4}
-          />
+          <div>
+            <label>Options 4:</label>
+            <input
+              type="text"
+              name="option4"
+              onChange={handleChangeValues}
+              value={questionData.option4}
+            />
+          </div>
           <br />
-          <label>Answer:</label>
-          <input
-            type="text"
-            name="answer"
-            onChange={handleChangeValues}
-            value={questionData.answer}
-          />
+          <div>
+            <label>Answer:</label>
+            <input
+              type="text"
+              name="answer"
+              onChange={handleChangeValues}
+              value={questionData.answer}
+            />
+          </div>
           <button>Submit</button>
         </form>
       </div>

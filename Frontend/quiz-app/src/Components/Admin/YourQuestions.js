@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import api from "../../ApiConfig";
+import "./YourQuestions.css";
 
 const YourQuestions = () => {
   const [allQuestions, setAllQuestions] = useState([]);
@@ -27,24 +28,30 @@ const YourQuestions = () => {
   }, []);
 
   return (
-    <div id="home-screen">
-      <div id="home-header">
+    <div id="your-questions-screen">
+      <div id="your-questions-header">
         <h2>Your Quiz Questions</h2>
       </div>
 
       <div id="all-questions">
         {allQuestions?.length &&
           allQuestions?.map((ques) => (
-            <>
-              <h3>{ques.question}</h3>
+            <div id="question" key={ques._id}>
+              <h3>
+                <span>Question: </span>
+                {ques.question}
+              </h3>
               <div>
                 <p>A) {ques.option1}</p>
                 <p>B) {ques.option2}</p>
                 <p>C) {ques.option3}</p>
                 <p>D) {ques.option4}</p>
-                <h3>{ques.answer}</h3>
               </div>
-            </>
+              <h3>
+                <span>Answer: </span>
+                {ques.answer}
+              </h3>
+            </div>
           ))}
       </div>
     </div>

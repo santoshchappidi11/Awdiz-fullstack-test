@@ -1,0 +1,90 @@
+#add-question-screen {
+  height: calc(100vh);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid black; */
+}
+
+#add-question-screen > #add-question-main {
+  height: auto;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 25px 0;
+  border-radius: 5px;
+  border: 1px solid rgb(189, 189, 189);
+}
+
+#add-question-screen > #add-question-main > #add-question-header {
+  margin: 0 0 20px 0;
+  /* border: 1px solid black; */
+}
+
+#add-question-screen > #add-question-main > #add-question-header > h2 {
+  font-size: 30px;
+}
+
+#add-question-screen > #add-question-main > form {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  /* border: 1px solid black; */
+}
+
+#add-question-screen > #add-question-main > form > div {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* border: 1px solid green; */
+}
+
+#add-question-screen > #add-question-main > form > div > label {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+#add-question-screen > #add-question-main > form > div > input {
+  width: 55%;
+  height: 35px;
+}
+
+#add-question-screen > #add-question-main > form > button {
+  padding: 5px 15px;
+  font-weight: 700;
+  font-size: 15px;
+  border: none;
+  background: none;
+  background-color: rgb(201, 201, 201);
+  cursor: pointer;
+  margin: 20px 0;
+  border-radius: 5px;
+}
+
+#add-question-screen > #add-question-main > p {
+  margin: 15px 0 0 0;
+  font-size: 15px;
+}
+
+#add-question-screen > #add-question-main > p > b {
+  cursor: pointer;
+}
+
+#add-question-screen > #add-question-main > form > #role {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0 20px 0;
+  /* border: 1px solid black; */
+}
+
+#add-question-screen > #add-question-main > form > #role > select {
+  width: 100px;
+  height: 30px;
+}

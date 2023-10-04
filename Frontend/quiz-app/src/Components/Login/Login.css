@@ -1,0 +1,76 @@
+#login-screen {
+  height: calc(100vh - 80px);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid black; */
+}
+
+#login-screen > #login-main {
+  height: auto;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 35px 0;
+  border-radius: 5px;
+  border: 1px solid rgb(189, 189, 189);
+}
+
+#login-screen > #login-main > #login-header {
+  margin: 0 0 20px 0;
+  /* border: 1px solid black; */
+}
+
+#login-screen > #login-main > #login-header > h2 {
+  font-size: 30px;
+}
+
+#login-screen > #login-main > form {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  /* border: 1px solid black; */
+}
+
+#login-screen > #login-main > form > div {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* border: 1px solid green; */
+}
+
+#login-screen > #login-main > form > div > label {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+#login-screen > #login-main > form > div > input {
+  width: 70%;
+  height: 30px;
+}
+
+#login-screen > #login-main > form > button {
+  padding: 5px 15px;
+  font-weight: 700;
+  font-size: 15px;
+  border: none;
+  background: none;
+  background-color: rgb(201, 201, 201);
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#login-screen > #login-main > p {
+  margin: 15px 0 0 0;
+  font-size: 15px;
+}
+
+#login-screen > #login-main > p > b {
+  cursor: pointer;
+}

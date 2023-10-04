@@ -1,0 +1,89 @@
+#register-screen {
+  height: calc(100vh - 80px);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid black; */
+}
+
+#register-screen > #register-main {
+  height: auto;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 35px 0;
+  border-radius: 5px;
+  border: 1px solid rgb(189, 189, 189);
+}
+
+#register-screen > #register-main > #register-header {
+  margin: 0 0 20px 0;
+  /* border: 1px solid black; */
+}
+
+#register-screen > #register-main > #register-header > h2 {
+  font-size: 30px;
+}
+
+#register-screen > #register-main > form {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  /* border: 1px solid black; */
+}
+
+#register-screen > #register-main > form > div {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* border: 1px solid green; */
+}
+
+#register-screen > #register-main > form > div > label {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+#register-screen > #register-main > form > div > input {
+  width: 55%;
+  height: 30px;
+}
+
+#register-screen > #register-main > form > button {
+  padding: 5px 15px;
+  font-weight: 700;
+  font-size: 15px;
+  border: none;
+  background: none;
+  background-color: rgb(201, 201, 201);
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#register-screen > #register-main > p {
+  margin: 15px 0 0 0;
+  font-size: 15px;
+}
+
+#register-screen > #register-main > p > b {
+  cursor: pointer;
+}
+
+#register-screen > #register-main > form > #role {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0 20px 0;
+  /* border: 1px solid black; */
+}
+
+#register-screen > #register-main > form > #role > select {
+  width: 100px;
+  height: 30px;
+}

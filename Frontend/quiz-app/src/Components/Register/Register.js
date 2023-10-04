@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import api from "../../ApiConfig/index";
 import { useNavigate } from "react-router-dom";
+import "./Register.css";
 
 const Register = () => {
   const navigateTo = useNavigate();
@@ -54,47 +55,58 @@ const Register = () => {
           <h2>Register</h2>
         </div>
         <form onSubmit={handleRegisterSubmit}>
-          <label>Name:</label>
-          <input
-            type="text"
-            name="name"
-            onChange={handleChangeValues}
-            value={userData.name}
-          />
+          <div>
+            <label>Name:</label>
+            <input
+              type="text"
+              name="name"
+              onChange={handleChangeValues}
+              value={userData.name}
+            />
+          </div>
           <br />
-          <label>Email:</label>
-          <input
-            type="email"
-            name="email"
-            onChange={handleChangeValues}
-            value={userData.email}
-          />
+          <div>
+            <label>Email:</label>
+            <input
+              type="email"
+              name="email"
+              onChange={handleChangeValues}
+              value={userData.email}
+            />
+          </div>
           <br />
-          <label>Password:</label>
-          <input
-            type="password"
-            name="password"
-            onChange={handleChangeValues}
-            value={userData.password}
-          />
+          <div>
+            <label>Password:</label>
+            <input
+              type="password"
+              name="password"
+              onChange={handleChangeValues}
+              value={userData.password}
+            />
+          </div>
           <br />
-          <label>Confirm Password:</label>
-          <input
-            type="password"
-            name="confirmPassword"
-            onChange={handleChangeValues}
-            value={userData.confirmPassword}
-          />
+          <div>
+            <label>Confirm Password:</label>
+            <input
+              type="password"
+              name="confirmPassword"
+              onChange={handleChangeValues}
+              value={userData.confirmPassword}
+            />
+          </div>
           <br />
-          <select
-            name="role"
-            onChange={handleChangeValues}
-            value={userData.role}
-          >
-            <option>User</option>
-            <option>Admin</option>
-          </select>
-          <br />
+          <div id="role">
+            <label>Select Role:</label>
+            <select
+              name="role"
+              onChange={handleChangeValues}
+              value={userData.role}
+            >
+              <option>User</option>
+              <option>Admin</option>
+            </select>
+            <br />
+          </div>
           <button>Submit</button>
         </form>
         <p>

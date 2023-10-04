@@ -1,0 +1,105 @@
+#all-quiz-screen {
+  height: calc(100vh - 80px);
+  width: 100%;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  flex-direction: column;
+  /* border: 1px solid black; */
+}
+
+#all-quiz-screen > #timer {
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid black; */
+}
+
+#all-quiz-screen > #timer > span {
+  margin: 0 5px;
+  font-weight: 500;
+}
+
+#all-quiz-screen > #timer > h3 {
+  width: 15%;
+}
+
+#all-quiz-screen > #all-quiz-header {
+  /* border: 1px solid black; */
+  margin: 20px 0 0 0;
+}
+
+#all-quiz-screen > #all-quiz-questions {
+  margin: 50px 0 0 0;
+  /* width: 50%; */
+  /* border: 1px solid black; */
+}
+
+#all-quiz-screen > #all-quiz-questions > #single-question {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 30px 60px;
+  border-radius: 5px;
+  border: 1px solid rgb(180, 180, 180);
+}
+
+#all-quiz-screen > #all-quiz-questions > #single-question > h3 {
+  /* border: 1px solid red; */
+  width: 100%;
+  padding: 0 0 20px 0;
+}
+
+#all-quiz-screen > #all-quiz-questions > div > h3 > span {
+  font-weight: 500;
+  font-size: 16px;
+  padding: 0 20px 0 0;
+}
+
+#all-quiz-screen > #all-quiz-questions > div > #options {
+  margin: 10px 0;
+  width: 100%;
+  /* border: 1px solid red; */
+}
+
+#all-quiz-screen > #all-quiz-questions > div > #options > #option {
+  width: 100%;
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+  /* flex-direction: column; */
+  /* border: 1px solid black; */
+}
+
+#all-quiz-screen > #all-quiz-questions > div > #options > #option > label {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0 0 0 30px;
+}
+
+#all-quiz-screen > #all-quiz-questions > div > #selected-answer {
+  margin: 12px 0;
+}
+
+#all-quiz-screen > #all-quiz-questions > div > button {
+  padding: 5px 12px;
+  font-weight: 700;
+  font-size: 14px;
+  border: none;
+  background: none;
+  background-color: rgb(201, 201, 201);
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+
+#all-quiz-screen > #all-quiz-questions > #admin-btns {
+  width: auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /* border: 1px solid black; */
+}

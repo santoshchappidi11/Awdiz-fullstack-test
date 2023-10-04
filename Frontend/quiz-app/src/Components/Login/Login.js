@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import api from "../../ApiConfig/index";
 import { useNavigate } from "react-router-dom";
 import { AuthContexts } from "../Context/AuthContext";
+import "./Login.css";
 
 const Login = () => {
   const { Login } = useContext(AuthContexts);
@@ -41,21 +42,25 @@ const Login = () => {
           <h2>Login</h2>
         </div>
         <form onSubmit={handleLoginSubmit}>
-          <label>Email:</label>
-          <input
-            type="email"
-            name="email"
-            onChange={handleChangeValues}
-            value={userData.email}
-          />
+          <div>
+            <label>Email:</label>
+            <input
+              type="email"
+              name="email"
+              onChange={handleChangeValues}
+              value={userData.email}
+            />
+          </div>
           <br />
-          <label>Password:</label>
-          <input
-            type="password"
-            name="password"
-            onChange={handleChangeValues}
-            value={userData.password}
-          />
+          <div>
+            <label>Password:</label>
+            <input
+              type="password"
+              name="password"
+              onChange={handleChangeValues}
+              value={userData.password}
+            />
+          </div>
           <br />
 
           <button>Submit</button>

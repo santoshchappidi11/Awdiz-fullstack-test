@@ -9,6 +9,7 @@ import {
   login,
   register,
   submitAnswer,
+  takeQuizAgain,
 } from "./Controllers/UserController.js";
 import {
   addQuestion,
@@ -33,6 +34,7 @@ app.post("/get-all-questions", getAllQuestions);
 app.post("/get-your-questions", getYourQuestions);
 app.post("/submit-answer", submitAnswer);
 app.post("/get-quiz-result", getQuizResult);
+app.post("/take-quiz-again", takeQuizAgain);
 
 mongoose
   .connect(
